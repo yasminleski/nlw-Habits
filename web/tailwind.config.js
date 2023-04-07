@@ -9,7 +9,7 @@ export default {
       colors: {
         bg: '#09090A'
       },
-      gridTemplateColumns: {
+      gridTemplateRows: {
         7: 'repeat(7, minmax(0, 1fr))'
       }
     },
