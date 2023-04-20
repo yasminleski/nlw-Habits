@@ -1,16 +1,17 @@
-import clsx from "clsx";
-import * as Popover from "@radix-ui/react-popover";
 import * as Checkbox from "@radix-ui/react-checkbox";
-import { ProgressBar } from "./ProgressBar";
+import * as Popover from "@radix-ui/react-popover";
+import clsx from "clsx";
 import { Check } from "phosphor-react";
+import { ProgressBar } from "./ProgressBar";
 
 interface HabitDayProps {
-  amount: number;
-  completed: number;
+  amount?: number;
+  completed?: number;
 }
 
-export function HabitDay({ amount, completed }: HabitDayProps) {
-  const completedPercentage = Math.round((completed / amount) * 100);
+export function HabitDay({ amount = 0, completed = 0 }: HabitDayProps) {
+  const completedPercentage = amount > 0 ? Math.round((completed / amount) * 100) : 0
+
   return (
     <Popover.Root>
       <Popover.Trigger
@@ -24,7 +25,7 @@ export function HabitDay({ amount, completed }: HabitDayProps) {
             completedPercentage >= 40 && completedPercentage < 60,
           "bg-violet-600 border-violet-500":
             completedPercentage >= 60 && completedPercentage < 80,
-          "bg-violet-500 border-violet-400": completedPercentage >= 80,
+          "bg-violet-400 border-violet-400": completedPercentage >= 80,
         })}
       />
 
