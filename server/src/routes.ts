@@ -65,13 +65,13 @@ export async function appRoutes(app: FastifyInstance) {
 
     const completedHabits = day?.dayHabits.map(dayHabit => {
       return dayHabit.habit_id
-    })
+    }) ?? []
 
     return { possibleHabits, completedHabits }
   })
 
   // marcar ou remover o habito
-  app.patch('/habit/:id/toogle', async (request) => {
+  app.patch('/habit/:id/toggle', async (request) => {
     const toggleHabitParams = z.object({
       id: z.string().uuid()
     })
